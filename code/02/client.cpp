@@ -1,11 +1,10 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <string.h>
-
-
+#include "util.h"
 int main() {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
-
+    errif(sockfd==-1,"client failure");
     struct sockaddr_in serv_addr;
     bzero(&serv_addr, sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
